@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Open/Close Door</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #222;
+    color: #fff;
+    margin-top: 50px;
+  }
+
+  .room {
+    position: relative;
+    width: 200px;
+    height: 300px;
+    margin: 0 auto;
+    background: #555;
+    border: 4px solid #333;
+    overflow: hidden;
+  }
+
+  .door {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: sienna;
+    transform-origin: left center;
+    transition: transform 1s ease;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.5);
+  }
+
+  .open {
+    transform: perspective(600px) rotateY(-100deg);
+  }
+
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<h1>🚪 Open/Close Door</h1>
+<div class="room">
+  <div id="door" class="door"></div>
+</div>
+<button onclick="toggleDoor()">Open Door</button>
+
+<script>
+  let isOpen = false;
+  const door = document.getElementById('door');
+  const button = document.querySelector('button');
+
+  function toggleDoor() {
+    isOpen = !isOpen;
+    door.classList.toggle('open', isOpen);
+    button.textContent = isOpen ? "Close Door" : "Open Door";
+  }
+</script>
+
+</body>
+</html>
